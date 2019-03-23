@@ -1,0 +1,16 @@
+{
+  "name": "2048",
+  "id": "5c680bd604290d542f4daf0a",
+  "searchable": true,
+  "instancable": true,
+  "shareDB": true,
+  "userInfo": true,
+  "creator": false,
+  "inline": false,
+  "servIndexes": {
+    "inline": "index",
+    "main": "index",
+    "fullscreen": "index"
+  },
+  "version": "1.0.0"
+}
