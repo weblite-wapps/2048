@@ -18,6 +18,13 @@ body {
   padding: 0;
 }
 
+#main {
+  width: 280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .heading:after {
   content: "";
   display: block;
@@ -693,12 +700,7 @@ hr {
     font-size: 27px;
     margin-top: 15px;
   }
-
-  .container {
-    width: 280px;
-    margin: 0 auto;
-  }
-
+  
   .score-container,
   .best-container {
     margin-top: 0;

@@ -1,6 +1,6 @@
 const dataStorage = {
   _data: {},
-
+ 
   setItem: function(id, val) {
     return (this._data[id] = val);
   },
