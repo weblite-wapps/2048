@@ -7,6 +7,7 @@ let gameMode = true
 function leaderboardTemplate(leaderboard) {
   return `
     <a id="playAgain" class="playAgain">Play again!</a>
+
     <div class="leaderboard"> 
       <h1>
         <svg class="ico-cup">
@@ -129,26 +130,3 @@ function update() {
 }
 
 update()
-
-
-
-{/* <li>
-<mark>${leaderboard[5].name}</mark>
-<small>${leaderboard[5].score}</small>
-</li>
-<li>
-<mark>${leaderboard[6].name}</mark>
-<small>${leaderboard[6].score}</small>
-</li>
-<li>
-<mark>${leaderboard[7].name}</mark>
-<small>${leaderboard[7].score}</small>
-</li>
-<li>
-<mark>${leaderboard[8].name}</mark>
-<small>${leaderboard[8].score}</small>
-</li>
-<li>
-<mark>${leaderboard[9].name}</mark>
-<small>${leaderboard[9].score}</small>
-</li> */}
