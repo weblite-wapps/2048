@@ -218,10 +218,16 @@ Leaderboard
 
 .playAgain {
   position: absolute;
-  bottom: 170px;
-  left: 130px;
-  color: #303642;
-  font-weight: bold;
-  text-decoration: underline;
+  bottom: 150px;
+  left: 115px;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  display: block;
+  text-align: center;
   cursor: pointer;
 }
