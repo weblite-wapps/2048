@@ -18,6 +18,13 @@ body {
   padding: 0;
 }
 
+#main {
+  width: 280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .heading:after {
   content: "";
   display: block;
@@ -72,21 +79,23 @@ h1.title {
 
 .score-container,
 .best-container {
+  box-sizing: content-box;
   position: relative;
   display: inline-block;
   background: #bbada0;
+  color: white;
   padding: 15px 25px;
   font-size: 25px;
   height: 25px;
   line-height: 47px;
   font-weight: bold;
   border-radius: 3px;
-  color: white;
   margin-top: 8px;
   text-align: center;
 }
 .score-container:after,
 .best-container:after {
+  box-sizing: content-box;
   position: absolute;
   width: 100%;
   top: 10px;
@@ -666,6 +675,17 @@ hr {
   float: right;
 }
 
+.leaderboard-button {
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  text-align: center;
+}
+
 .game-explanation {
   margin-top: 50px;
 }
@@ -693,12 +713,7 @@ hr {
     font-size: 27px;
     margin-top: 15px;
   }
-
-  .container {
-    width: 280px;
-    margin: 0 auto;
-  }
-
+  
   .score-container,
   .best-container {
     margin-top: 0;
@@ -715,14 +730,6 @@ hr {
     display: block;
     box-sizing: border-box;
     line-height: 1.65;
-  }
-
-  .restart-button {
-    width: 42%;
-    padding: 0;
-    display: block;
-    box-sizing: border-box;
-    margin-top: 2px;
   }
 
   .game-container {

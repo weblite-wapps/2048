@@ -1,6 +1,6 @@
 const dataStorage = {
   _data: {},
-
+ 
   setItem: function(id, val) {
     return (this._data[id] = val);
   },
@@ -80,7 +80,7 @@ StorageManager.prototype.addToLeaderboard = function(score) {
     [
       [
         "__unless",
-        [["__compose", [["__gte", [5]], ["__length"]]], ["__dropLast", [1]]]
+        [["__compose", [["__gte", [10]], ["__length"]]], ["__dropLast", [1]]]
       ],
       ["__reverse"],
       ["__sortBy", [["__prop", ["score"]]]],
