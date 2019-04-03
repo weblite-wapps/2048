@@ -649,6 +649,10 @@ hr {
   animation-fill-mode: backwards;
 }
 
+.above-game {
+  user-select: none;
+}
+
 .above-game:after {
   content: "";
   display: block;
@@ -723,6 +727,7 @@ hr {
 
   .heading {
     margin-bottom: 10px;
+    user-select: none;
   }
 
   .game-intro {
