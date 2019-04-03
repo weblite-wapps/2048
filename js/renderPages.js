@@ -6,9 +6,9 @@ let gameMode = true
 
 function leaderboardTemplate(leaderboard) {
   return `
-    <a id="playAgain" class="playAgain">Play again!</a>
+    <a id="playAgain" class="playAgain">Play the game!</a>
 
-    <div class="leaderboard"> 
+    <div class="leaderboard">
       <h1>
         <svg class="ico-cup">
           <use xlink:href="#cup"></use>
@@ -76,6 +76,7 @@ function gameTemplate() {
         <div class="lower">
           <a class="keep-playing-button">Keep going</a>
           <a class="retry-button">Try again</a>
+          <a class="leaderboard-button">Leaderboard</a>
         </div>
       </div>
 
@@ -121,6 +122,7 @@ function changeGameMode() {
 }
 
 function update() {
+  console.log('kind')
   if (gameMode) {
     render(gameTemplate(), document.querySelector('#main'))
   } else {

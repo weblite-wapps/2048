@@ -10,7 +10,7 @@ const dataStorage = {
   },
 
   removeItem: function(id) {
-    return delete this._data[id];
+    return delete this._data[id]; 
   },
 
   clear: function() {

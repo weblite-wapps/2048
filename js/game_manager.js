@@ -16,6 +16,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
         W.share.getFromServer([]).then(() => {
           self.setup();
           start();
+          // update();
         });
       });
     }
@@ -30,6 +31,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
+  this.inputManager.on("leaderboard", this.leaderboard.bind(this));
 }
 
 // Restart the game
@@ -37,6 +39,12 @@ GameManager.prototype.restart = function() {
   this.storageManager.clearGameState();
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
+};
+
+GameManager.prototype.leaderboard = function() {
+  console.log('shit')
+  this.storageManager.clearGameState();
+  changeGameMode();
 };
 
 // Keep playing after winning (allows going over 2048)
@@ -101,7 +109,7 @@ GameManager.prototype.actuate = function() {
   if (this.over) {
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
-    changeGameMode()
+    // changeGameMode()
   } else {
     this.storageManager.setGameState(this.serialize());
   }
