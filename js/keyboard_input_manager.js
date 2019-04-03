@@ -140,7 +140,6 @@ KeyboardInputManager.prototype.keepPlaying = function (event) {
 
 KeyboardInputManager.prototype.leaderboard = function (event) {
   event.preventDefault();
-  console.log('leaderboard')
   this.emit("leaderboard");
 };
 

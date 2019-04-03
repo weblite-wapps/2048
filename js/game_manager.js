@@ -16,7 +16,6 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
         W.share.getFromServer([]).then(() => {
           self.setup();
           start();
-          // update();
         });
       });
     }
@@ -42,7 +41,6 @@ GameManager.prototype.restart = function() {
 };
 
 GameManager.prototype.leaderboard = function() {
-  console.log('shit')
   this.storageManager.clearGameState();
   changeGameMode();
 };
@@ -109,7 +107,6 @@ GameManager.prototype.actuate = function() {
   if (this.over) {
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
-    // changeGameMode()
   } else {
     this.storageManager.setGameState(this.serialize());
   }
@@ -120,7 +117,7 @@ GameManager.prototype.actuate = function() {
     won: this.won,
     bestScore: this.storageManager.getBestScore(),
     terminated: this.isGameTerminated()
-  });
+  }); 
 };
 
 // Represent the current game as an object

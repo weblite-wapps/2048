@@ -6,7 +6,7 @@ let gameMode = true
 
 function leaderboardTemplate(leaderboard) {
   return `
-    <a id="playAgain" class="playAgain">Play the game!</a>
+    <a id="playAgain" class="playAgain">New Game</a>
 
     <div class="leaderboard">
       <h1>
@@ -113,16 +113,15 @@ function gameTemplate() {
 
 function changeGameMode() {
   gameMode = !gameMode;
-  update()
   if(gameMode) {
     window.requestAnimationFrame(function() {
       new GameManager(4, KeyboardInputManager, HTMLActuator, StorageManager)
     })
   }
+  update()
 }
 
 function update() {
-  console.log('kind')
   if (gameMode) {
     render(gameTemplate(), document.querySelector('#main'))
   } else {
