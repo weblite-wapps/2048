@@ -101,6 +101,7 @@ GameManager.prototype.actuate = function() {
   if (this.over) {
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
+    changeGameMode()
   } else {
     this.storageManager.setGameState(this.serialize());
   }

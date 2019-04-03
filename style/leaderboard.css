@@ -18,6 +18,7 @@ ol {
 Leaderboard
 --------------------*/
 .leaderboard {
+  /* visibility: hidden; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,6 +96,7 @@ Leaderboard
   opacity: 0;
 }
 .leaderboard ol li mark::after {
+  box-sizing: border-box;
   left: auto;
   right: -9px;
   border-left: none;
@@ -108,6 +110,7 @@ Leaderboard
   color: white;
 }
 .leaderboard ol li::after {
+  box-sizing: border-box;
   content: '';
   position: absolute;
   z-index: 1;
@@ -124,12 +127,14 @@ Leaderboard
   background: #fa6855;
 }
 .leaderboard ol li:nth-child(1)::after {
+  box-sizing: border-box;
   background: #fa6855;
 }
 .leaderboard ol li:nth-child(2) {
   background: #e0574f;
 }
 .leaderboard ol li:nth-child(2)::after {
+  box-sizing: border-box;
   background: #e0574f;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
@@ -141,10 +146,12 @@ Leaderboard
   background: #d7514d;
 }
 .leaderboard ol li:nth-child(3)::after {
+  box-sizing: border-box;
   background: #d7514d;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.11);
 }
 .leaderboard ol li:nth-child(3) mark::before, .leaderboard ol li:nth-child(3) mark::after {
+  box-sizing: border-box;
   border-top: 2px solid #b0433f;
   bottom: -3px;
 }
@@ -152,10 +159,12 @@ Leaderboard
   background: #cd4b4b;
 }
 .leaderboard ol li:nth-child(4)::after {
+  box-sizing: border-box;
   background: #cd4b4b;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 .leaderboard ol li:nth-child(4) mark::before, .leaderboard ol li:nth-child(4) mark::after {
+  box-sizing: border-box;
   top: -7px;
   bottom: auto;
   border-top: none;
@@ -166,11 +175,13 @@ Leaderboard
   border-radius: 0 0 10px 10px;
 }
 .leaderboard ol li:nth-child(5)::after {
+  box-sizing: border-box;
   background: #c24448;
   box-shadow: 0 -2.5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0 0 10px 10px;
 }
 .leaderboard ol li:nth-child(5) mark::before, .leaderboard ol li:nth-child(5) mark::after {
+  box-sizing: border-box;
   top: -9px;
   bottom: auto;
   border-top: none;
@@ -181,11 +192,13 @@ Leaderboard
   overflow: visible;
 }
 .leaderboard ol li:hover::after {
+  box-sizing: border-box;
   opacity: 1;
   -webkit-transform: scaleX(1.06) scaleY(1.03);
           transform: scaleX(1.06) scaleY(1.03);
 }
 .leaderboard ol li:hover mark::before, .leaderboard ol li:hover mark::after {
+  box-sizing: border-box;
   opacity: 1;
   transition: all .35s ease-in-out;
 }
@@ -203,3 +216,12 @@ Leaderboard
   max-width: 100%;
 }
 
+.playAgain {
+  position: absolute;
+  bottom: 170px;
+  left: 130px;
+  color: #303642;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
