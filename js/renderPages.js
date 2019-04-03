@@ -14,28 +14,7 @@ function leaderboardTemplate(leaderboard) {
         </svg>
         Best scores
       </h1>
-      <ol>
-        <li>
-          <mark>${leaderboard[0].name}</mark>
-          <small>${leaderboard[0].score}</small>
-        </li>
-        <li>
-          <mark>${leaderboard[1].name}</mark>
-          <small>${leaderboard[1].score}</small>
-        </li>
-        <li>
-          <mark>${leaderboard[2].name}</mark>
-          <small>${leaderboard[2].score}</small>
-        </li>
-        <li>
-          <mark>${leaderboard[3].name}</mark>
-          <small>${leaderboard[3].score}</small>
-        </li>
-        <li>
-          <mark>${leaderboard[4].name}</mark>
-          <small>${leaderboard[4].score}</small>
-        </li>
-      </ol>
+      ${renderLeaderboard(leaderboard)}
     </div>
     
     <svg style="display: none;">
@@ -61,6 +40,19 @@ function leaderboardTemplate(leaderboard) {
         </symbol>
     </svg>
   </div>`
+}
+
+function renderLeaderboard(leaderboard) {
+  return`<ol>${leaderboard.map(renderLeaderboardItem).join('')}</ol>`
+}
+
+function renderLeaderboardItem(item) {
+  return `
+    <li>
+      <mark>${item.name}</mark>
+      <small>${item.score}</small> 
+    </li>
+`
 }
 
 function gameTemplate() {
