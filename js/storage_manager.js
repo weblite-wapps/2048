@@ -23,6 +23,7 @@ function StorageManager() {
   this.gameStateKey = "gameState";
   this.leaderboardKey = "leaderboard";
   this.usernameKey = "username";
+  this.userScoreKey = "userScore"
 
   this.storage = dataStorage;
 }
@@ -45,6 +46,15 @@ StorageManager.prototype.getLeaderboard = function() {
 
 StorageManager.prototype.setLeaderboard = function(leaderboard) {
   this.storage.setItem(this.leaderboardKey, leaderboard);
+};
+
+// user score getters/setters
+StorageManager.prototype.getUserScore = function() {
+  return this.storage.getItem(this.userScoreKey) || 0;
+};
+
+StorageManager.prototype.setUserScore = function(userScore) {
+  return this.storage.setItem(this.userScoreKey, userScore);
 };
 
 // Game state getters/setters and clearing
@@ -139,3 +149,4 @@ StorageManager.prototype.addToLeaderboard = function(score) {
     ]
   ]);
 };
+

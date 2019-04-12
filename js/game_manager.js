@@ -1,3 +1,12 @@
+const { R } = window
+
+const getUserScore = (leaderboard, username) =>
+  R.find(R.propEq("name", username), leaderboard) ?
+    R.compose(
+      R.prop("score"),
+      R.find(R.propEq("name", username)),
+    )(leaderboard) : false
+
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.storageManager = new StorageManager();
 
@@ -6,10 +15,13 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
     wappWillStart(start) {
       W.loadData().then(({ localdb: bestScore, user: { name } }) => {
         self.storageManager.setUsername(name || "tempUsername");
-
+        
         W.share.subscribe(leaderboard => {
           self.storageManager.setLeaderboard(
             leaderboard || [{ name: "", score: 0 }]
+          );
+          self.storageManager.setUserScore(
+            getUserScore(leaderboard, name) || ""
           );
         });
 
@@ -100,11 +112,17 @@ GameManager.prototype.addRandomTile = function() {
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function() {
   if (this.storageManager.getBestScore() < this.score) {
+    if (this.over)
+      W.sendNotificationToAll("2048", `Record is broken by ${this.storageManager.getUsername()}`);
+
     this.storageManager.setBestScore(this.score);
   }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
+    if ((this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score))
+      W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} improved his record`);
+
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
   } else {
@@ -291,3 +309,4 @@ GameManager.prototype.tileMatchesAvailable = function() {
 GameManager.prototype.positionsEqual = function(first, second) {
   return first.x === second.x && first.y === second.y;
 };
+
