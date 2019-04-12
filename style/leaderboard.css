@@ -161,28 +161,39 @@ Leaderboard
 }
 .leaderboard ol li:nth-child(5)::after {
   background: #fa6855;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.leaderboard ol li:nth-child(5) mark::before, .leaderboard ol li:nth-child(5) mark::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 6px solid #fa6855;
 }
 .leaderboard ol li:nth-child(6) {
   background: #e0574f;
 }
 .leaderboard ol li:nth-child(6)::after {
   background: #e0574f;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
-.leaderboard ol li:nth-child(6) mark::before, .leaderboard ol li:nth-child(2) mark::after {
-  border-top: 6px solid #e0574f;
-  bottom: -7px;
+.leaderboard ol li:nth-child(6) mark::before, .leaderboard ol li:nth-child(6) mark::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 6px solid #e0574f;
 }
 .leaderboard ol li:nth-child(7) {
   background: #fa6855;
 }
 .leaderboard ol li:nth-child(7)::after {
   background: #fa6855;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.11);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
-.leaderboard ol li:nth-child(7) mark::before, .leaderboard ol li:nth-child(3) mark::after {
-  border-top: 2px solid #fa6855;
-  bottom: -3px;
+.leaderboard ol li:nth-child(7) mark::before, .leaderboard ol li:nth-child(7) mark::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 6px solid #fa6855;
 }
 .leaderboard ol li:nth-child(8) {
   background: #e0574f;
@@ -191,7 +202,7 @@ Leaderboard
   background: #e0574f;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
-.leaderboard ol li:nth-child(8) mark::before, .leaderboard ol li:nth-child(4) mark::after {
+.leaderboard ol li:nth-child(8) mark::before, .leaderboard ol li:nth-child(8) mark::after {
   top: -7px;
   bottom: auto;
   border-top: none;
@@ -202,22 +213,28 @@ Leaderboard
 }
 .leaderboard ol li:nth-child(9)::after {
   background: #fa6855;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.leaderboard ol li:nth-child(9) mark::before, .leaderboard ol li:nth-child(9) mark::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 6px solid #fa6855;
 }
 .leaderboard ol li:nth-child(10) {
   background: #e0574f;
-  border-radius: 0 0 10px 10px;
 }
 .leaderboard ol li:nth-child(10)::after {
   background: #e0574f;
-  box-shadow: 0 -2.5px 0 rgba(0, 0, 0, 0.12);
-  border-radius: 0 0 10px 10px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
-.leaderboard ol li:nth-child(10) mark::before, .leaderboard ol li:nth-child(5) mark::after {
-  top: -9px;
+.leaderboard ol li:nth-child(10) mark::before, .leaderboard ol li:nth-child(10) mark::after {
+  top: -7px;
   bottom: auto;
   border-top: none;
-  border-bottom: 8px solid #e0574f;
+  border-bottom: 6px solid #e0574f;
 }
+
 .leaderboard ol li:hover {
   z-index: 2;
   overflow: visible;
@@ -243,22 +260,4 @@ Leaderboard
 }
 .the-most img {
   max-width: 100%;
-}
-
-.buttonContainer {
-  margin-bottom: 20px;
-}
-
-.playAgain {
-  background: #8f7a66;
-  border-radius: 3px;
-  padding: 0 20px;
-  text-decoration: none;
-  color: #f9f6f2;
-  height: 40px;
-  line-height: 42px;
-  display: block;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
