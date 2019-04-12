@@ -21,9 +21,10 @@
   height: 100vh;
   background: rgba(238, 228, 218, 0.5);
   transition: opacity 500ms;
+  z-index: 5;
 }
 .modal__overlay--open {
-  opacity: 1;
+  opacity: 0.5;
   background: #8f7a66;
   filter: blur(8px);
   -webkit-filter: blur(8px);
