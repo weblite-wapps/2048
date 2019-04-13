@@ -113,18 +113,21 @@ GameManager.prototype.addRandomTile = function() {
 GameManager.prototype.actuate = function() {
   if (this.storageManager.getBestScore() < this.score) {
     if (this.over)
-      W.sendNotificationToAll("2048", `Record is broken by ${this.storageManager.getUsername()}`);
+      W.sendNotificationToAll("2048", `Record is broken with score ${this.score} by ${this.storageManager.getUsername()}`);
 
     this.storageManager.setBestScore(this.score);
   }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
-    if ((this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score))
+    if (this.storageManager.getUserScore() && (this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score))
       W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} improved his record`);
 
+    if (!this.storageManager.getUserScore())
+      W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} arrived to scoreboard for the first time`);
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
+    this.storageManager.setUserScore(this.score);
   } else {
     this.storageManager.setGameState(this.serialize());
   }
