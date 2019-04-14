@@ -107,34 +107,39 @@ GameManager.prototype.addRandomTile = function() {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function() {
-  if (this.storageManager.getBestScore() < this.score) {
+  const bestScore = this.storageManager.getBestScore()
+  const oldScore = this.storageManager.getUserScore()
+  const newScore = this.score
+  const username = this.storageManager.getUsername()
+
+  if (bestScore < newScore) {
     if (this.over) {
-      W.sendNotificationToAll("2048", `Record is broken with score ${this.score} by ${this.storageManager.getUsername()}`);
+      W.sendNotificationToAll("2048", `Record is broken with score ${newScore} by ${username}`);
       W.analytics("RECORD_IS_BROKEN")
     }
-    this.storageManager.setBestScore(this.score);
+    this.storageManager.setBestScore(newScore);
   }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
-    if (this.storageManager.getUserScore() && (this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score)) {
-      W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} improved his record`);
+    if (oldScore && (oldScore < newScore) && (bestScore >= newScore)) {
+      W.sendNotificationToAll("2048", `${username} improved his record ${newScore - oldScore} points`);
       W.analytics("IMPROVED_HIS_RECORD")
     }
 
-    if (!this.storageManager.getUserScore()) {
-      W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} arrived to scoreboard for the first time`);
+    if (!oldScore) {
+      W.sendNotificationToAll("2048", `${username} arrived to scoreboard for the first time`);
       W.analytics("ARRIVED_TO_SCOREBOARD_FOR_FIRST_TIME")
     }
-    this.storageManager.addToLeaderboard(this.score);
+    this.storageManager.addToLeaderboard(newScore);
     this.storageManager.clearGameState();
-    this.storageManager.setUserScore(this.score);
+    this.storageManager.setUserScore(newScore);
   } else {
     this.storageManager.setGameState(this.serialize());
   }
 
   this.actuator.actuate(this.grid, {
-    score: this.score,
+    score: newScore,
     over: this.over,
     won: this.won,
     bestScore: this.storageManager.getBestScore(),
