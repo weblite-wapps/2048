@@ -1,3 +1,5 @@
+const { W } = window
+
 class Modal {
     constructor(template) {
       this.createModal(template)
@@ -88,6 +90,7 @@ class Modal {
   const modalBtn = document.querySelector('.leaderboard-button')
   modalBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    W.analytics('SCOREBOARD_CLICK')
     const template = document.createElement('div')
     template.innerHTML = `
       <div class="leaderboard">

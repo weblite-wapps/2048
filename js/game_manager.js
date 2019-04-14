@@ -42,7 +42,6 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
-  this.inputManager.on("leaderboard", this.leaderboard.bind(this));
 }
 
 // Restart the game
@@ -50,17 +49,14 @@ GameManager.prototype.restart = function() {
   this.storageManager.clearGameState();
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
-};
-
-GameManager.prototype.leaderboard = function() {
-  this.storageManager.clearGameState();
-  changeGameMode();
+  W.analytics("NEW_GAME_CLICK")
 };
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function() {
   this.keepPlaying = true;
   this.actuator.continueGame(); // Clear the game won/lost message
+  W.analytics("KEEP_PLAYING_CLICK")
 };
 
 // Return true if the game is lost, or has won and the user hasn't kept playing
@@ -112,19 +108,24 @@ GameManager.prototype.addRandomTile = function() {
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function() {
   if (this.storageManager.getBestScore() < this.score) {
-    if (this.over)
+    if (this.over) {
       W.sendNotificationToAll("2048", `Record is broken with score ${this.score} by ${this.storageManager.getUsername()}`);
-
+      W.analytics("RECORD_IS_BROKEN")
+    }
     this.storageManager.setBestScore(this.score);
   }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
-    if (this.storageManager.getUserScore() && (this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score))
+    if (this.storageManager.getUserScore() && (this.storageManager.getUserScore() < this.score) && (this.storageManager.getBestScore() >= this.score)) {
       W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} improved his record`);
+      W.analytics("IMPROVED_HIS_RECORD")
+    }
 
-    if (!this.storageManager.getUserScore())
+    if (!this.storageManager.getUserScore()) {
       W.sendNotificationToAll("2048", `${this.storageManager.getUsername()} arrived to scoreboard for the first time`);
+      W.analytics("ARRIVED_TO_SCOREBOARD_FOR_FIRST_TIME")
+    }
     this.storageManager.addToLeaderboard(this.score);
     this.storageManager.clearGameState();
     this.storageManager.setUserScore(this.score);
