@@ -125,6 +125,7 @@ GameManager.prototype.actuate = function() {
     if (oldScore && (oldScore < newScore) && (bestScore >= newScore)) {
       W.sendNotificationToAll("2048", `${username} improved his record ${newScore - oldScore} points`);
       W.analytics("IMPROVED_HIS_RECORD")
+      this.storageManager.setUserScore(newScore);
     }
 
     if (!oldScore) {
@@ -133,7 +134,6 @@ GameManager.prototype.actuate = function() {
     }
     this.storageManager.addToLeaderboard(newScore);
     this.storageManager.clearGameState();
-    this.storageManager.setUserScore(newScore);
   } else {
     this.storageManager.setGameState(this.serialize());
   }
